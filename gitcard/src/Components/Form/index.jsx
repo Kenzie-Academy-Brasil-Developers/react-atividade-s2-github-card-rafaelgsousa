@@ -13,23 +13,41 @@ function Form({lista,setLista}){
         resolver: yupResolver(schema)
     })
 
+    const error = document.getElementById("error")
+
     function enviarDados(data){
         fetch(`https://api.github.com/repos/${data.repositorio}`)
         .then((response)=>response.json())
-        .then((response)=>setLista([response,...lista]))
-        .catch((err)=>console.log("err:",err))
+        .then((response)=>response.message!=="Not Found"?
+        setLista([response,...lista])
+        :
+        error.innerText="Esse repositório não existe")
+        .catch((err)=>console.log(err))
     }
 
     return(
         <>
-            <form onSubmit={handleSubmit(enviarDados)} className="Formulario">
+            <form onSubmit={(handleSubmit(enviarDados))} className="Formulario">
+                {console.log("errors",errors)}
                 <div className="form">
                     <input placeholder="Escreva nome da organização/repositório" {...register("repositorio")} className="pesquisa"></input>
                     <button type="submit" className="botao">Pesquisar</button>
                 </div>
-                {<p>{errors.repositorio?.message}</p>}
+                {<p id="error">{errors.repositorio?.message}</p>}
             </form>
         </>
     )
 }
 export default Form
+
+
+
+
+
+
+
+
+
+
+
+
