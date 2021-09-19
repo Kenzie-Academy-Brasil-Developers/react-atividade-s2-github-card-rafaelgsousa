@@ -1,0 +1,33 @@
+.Formulario {
+    display: flex;
+    flex-direction: column;
+    height: 60px;
+    width: 60%;
+}
+
+.form {
+    height: 50px;
+    width: 100%;
+}
+
+.pesquisa,.botao{
+    box-sizing: border-box;
+    margin: 5px;
+}
+
+.pesquisa {
+    height: 40px;
+    border: none;
+    width: 60%;
+    padding: 0px;
+    padding-left: 10px;
+}
+.botao {
+    height: 40px;
+    width: 30%;
+    font-size: 0.9 em;
+}
+.Formulario p {
+    margin: 5px;
+    font-size: 12px;
+}
