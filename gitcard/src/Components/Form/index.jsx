@@ -17,8 +17,8 @@ function Form({lista,setLista}){
 
     function enviarDados(data){
         fetch(`https://api.github.com/repos/${data.repositorio}`)
-        .then((response)=>response.json())
-        .then((response)=>response.message!=="Not Found"?
+        .then((response)=> response.json())
+        .then((response)=> response.message!=="Not Found"?
         setLista([response,...lista])
         :
         error.innerText="Esse repositório não existe")
@@ -39,15 +39,3 @@ function Form({lista,setLista}){
     )
 }
 export default Form
-
-
-
-
-
-
-
-
-
-
-
-
